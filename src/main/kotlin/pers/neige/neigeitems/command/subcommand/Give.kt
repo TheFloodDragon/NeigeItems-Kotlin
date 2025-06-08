@@ -29,6 +29,7 @@ import pers.neige.neigeitems.utils.LangUtils.sendLang
 import pers.neige.neigeitems.utils.PlayerUtils.giveItems
 import pers.neige.neigeitems.utils.SchedulerUtils.async
 import pers.neige.neigeitems.utils.SchedulerUtils.sync
+import kotlin.system.measureTimeMillis
 
 /**
  * ni give指令
@@ -138,6 +139,7 @@ object Give {
         data: String?,
         tip: Boolean
     ) {
+        measureTimeMillis {
         val giveData = HashMap<String, Int>()
         if (random) {
             // 给物品
@@ -189,5 +191,6 @@ object Give {
                 )
             }
         }
+        }.let { println("NeigeItems generated item costs $it ms") }
     }
 }
